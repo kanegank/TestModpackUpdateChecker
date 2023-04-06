@@ -1,8 +1,8 @@
 on:
   workflow_dispatch:
     inputs:
-      changelog:
-        description: 'Add Changelog Here'
+      version:
+        description: 'Version'
         required: true
         type: string
         default: ''
@@ -11,5 +11,7 @@ jobs:
     steps:
       - name: Update File
         run: java -Dfile.encoding=UTF-8 -jar modpackUpdater.jar
+        env: 
+          VERSION: ${{ inputs.version }}
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
