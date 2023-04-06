@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     if: |
       github.event.changes.body &&
-      contains(github.event.pull_request.labels.*.name, 'version-update')
+      contains(github.event.pull_request.labels.*.name, 'version-update') &&
+      github.event.pull_request.state == 'open'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -24,7 +25,7 @@ jobs:
       - name: Print new contents
         run: |
           java -Dfile.encoding=UTF-8 -jar modpackUpdater.jar
-          git add changelog.json
+          git add changelogs.json
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git commit -m "Updated changelogs.json"
