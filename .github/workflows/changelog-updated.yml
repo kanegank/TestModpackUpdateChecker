@@ -11,6 +11,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Fetch and merge changes
+        run: |
+          git fetch origin/${{ github.head_ref }}
+          git merge origin/${{ github.head_ref }}
       - name: Print new contents
         run: |
           echo "${{ github.event.pull_request.body }}" >> contents.txt
