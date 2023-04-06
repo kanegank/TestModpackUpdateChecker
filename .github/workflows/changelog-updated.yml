@@ -1,0 +1,13 @@
+on:
+  issue_comment:
+    types: edited
+
+jobs:
+  comment_edited_job:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'edited' && github.event.comment.previous_version == null && contains(github.event.issue.labels.*.name, 'version-update')
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Print new contents
+        run: echo "New comment contents: ${{ github.event.comment.body }}"

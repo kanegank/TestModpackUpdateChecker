@@ -25,5 +25,10 @@ jobs:
           VERSION: ${{ inputs.version }}
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
+        with:
+          title: '[Bot] Update to ${{ inputs.version }}'
+          labels: |
+              version-update
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ inputs.version }}
