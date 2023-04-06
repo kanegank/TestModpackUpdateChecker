@@ -1,0 +1,7 @@
+on:
+  workflow_dispatch:
+    inputs:
+      changelog:
+        description: 'Add Changelog Here'
+        required: true
+        default: ''
