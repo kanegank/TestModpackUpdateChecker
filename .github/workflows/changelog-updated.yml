@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     if: |
       github.event.changes.body &&
-      contains(github.event.pull_request.labels.*.name, 'version-update")
+      contains(github.event.pull_request.labels.*.name, "version-update")
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
