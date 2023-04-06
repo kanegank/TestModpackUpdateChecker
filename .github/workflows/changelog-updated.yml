@@ -1,13 +1,16 @@
 on:
-  issue_comment:
+  pull_request:
     types: edited
 
 jobs:
-  comment_edited_job:
+  pr_body_edited_job:
     runs-on: ubuntu-latest
-    if: github.event.action == 'edited' && github.event.comment.previous_version == null && contains(github.event.issue.labels.*.name, 'version-update')
+    if: |
+      github.event.changes.body &&
+      contains(github.event.pull_request.labels.*.name, 'version-update")
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Print new contents
-        run: echo "New comment contents ${{ github.event.comment.body }}"
+        run: |
+          echo "New pull request body: ${{ github.event.pull_request.body }}"

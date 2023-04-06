@@ -29,6 +29,8 @@ jobs:
           title: '[Bot] Update to ${{ inputs.version }}'
           labels: |
               version-update
+          body: |
+            Replace my contents with the changelog
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ inputs.version }}
