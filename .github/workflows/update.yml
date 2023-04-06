@@ -8,7 +8,7 @@ on:
         default: ''
 jobs:
   updateVersionFile:
-  runs-on: [ubuntu-latest]
+    runs-on: [ubuntu-latest]
     steps:
       - name: Update File
         run: java -Dfile.encoding=UTF-8 -jar modpackUpdater.jar
