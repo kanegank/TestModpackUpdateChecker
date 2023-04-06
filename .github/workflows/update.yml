@@ -11,7 +11,7 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
       - name: Update File
-        run: java -Dfile.encoding=UTF-8 -jar modpackUpdater.jar
+        run: ls && java -Dfile.encoding=UTF-8 -jar modpackUpdater.jar
         env: 
           VERSION: ${{ inputs.version }}
       - name: Create Pull Request
