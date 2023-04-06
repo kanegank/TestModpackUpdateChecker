@@ -17,11 +17,17 @@ jobs:
       #   run: |
       #     git fetch origin
       #     git merge origin/${{ github.head_ref }} --allow-unrelated-histories
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '17'
       - name: Print new contents
         run: |
-          echo "${{ github.event.pull_request.body }}" >> contents.txt
-          git add contents.txt
+          java -Dfile.encoding=UTF-8 -jar modpackUpdater.jar
+          git add changelog.json
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git commit -m "Added new contents to contents.txt"
+          git commit -m "Updated changelogs.json"
           git push origin HEAD:${{ github.head_ref }}
+        env:
+          CHANGELOG: ${{ github.event.pull_request.body }}
