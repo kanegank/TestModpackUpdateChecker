@@ -8,8 +8,8 @@ on:
         default: ''
 jobs:
   updateVersionFile:
-  steps:
-    - name: Update File
-      run: java -Dfile.encoding=UTF-8 -jar modpackUpdater.jar
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v5
+    steps:
+      - name: Update File
+        run: java -Dfile.encoding=UTF-8 -jar modpackUpdater.jar
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
