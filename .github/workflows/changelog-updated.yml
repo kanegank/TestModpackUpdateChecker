@@ -11,10 +11,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Fetch and merge changes
-        run: |
-          git fetch origin
-          git merge origin/${{ github.head_ref }} --allow-unrelated-histories
+        with:
+          fetch-depth: 0
+      # - name: Fetch and merge changes
+      #   run: |
+      #     git fetch origin
+      #     git merge origin/${{ github.head_ref }} --allow-unrelated-histories
       - name: Print new contents
         run: |
           echo "${{ github.event.pull_request.body }}" >> contents.txt
