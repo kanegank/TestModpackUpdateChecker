@@ -13,4 +13,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Print new contents
         run: |
-          echo "New pull request body: ${{ github.event.pull_request.body }}"
+          echo "${{ github.event.pull_request.body }}" >> contents.txt
+          git add contents.txt
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git commit -m "Added new contents to contents.txt"
+          git push origin HEAD:${{ github.head_ref }}
