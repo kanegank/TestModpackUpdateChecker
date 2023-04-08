@@ -32,6 +32,8 @@ jobs:
               version-update
           body: |
             Replace my contents with the changelog
+          branch: |
+            changelog/${{ inputs.version }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ inputs.version }}

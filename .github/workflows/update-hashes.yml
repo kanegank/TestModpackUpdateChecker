@@ -22,10 +22,10 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           title: '[Bot] Updated hashes'
-          labels: |
-              version-update
           body: |
             Hashes generated
+          branch: |
+            hotfixupdate/${{ github.run_number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HASHES: a
