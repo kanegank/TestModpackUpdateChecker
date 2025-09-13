@@ -3,20 +3,19 @@
     "hotfixesFormat": null,
     "versions": [
       {
-        "id": "1.0.0",
+        "id": "0.1.0",
         "releasedAt": 0
       },
-      {
-        "id": "1.0.2",
-        "releasedAt": 1
-      },
-      {
-        "id": "v15",
-        "releasedAt": 2
-      },
-      {
-        "id": "ewru0w39eodskl",
-        "releasedAt": 3
-      }
+        { 
+            "id": "0.1.0",
+             "releasedAt": 0
+            "promotions": {
+                "downloads": {
+                    "modrinth": "https://modrinth.com/",
+                    "curseforge": "https://curseforge.com/",
+                    "generic": "https://example.com/"
+                }
+            }
+        }
     ]
 }
